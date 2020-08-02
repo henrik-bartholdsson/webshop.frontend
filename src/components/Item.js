@@ -5,7 +5,6 @@ export default class Item extends React.Component {
     loading: true,
     loadingError: false,
     object: {},
-    testName: "Test",
   };
 
   async componentDidMount() {
