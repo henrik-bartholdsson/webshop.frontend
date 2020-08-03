@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.css";
 import { useSelector, useDispatch } from "react-redux";
-import { isLoged, isNotLoged } from "../store/actions";
+import { isLoged } from "../store/actions";
 
 function Header() {
   const dispatch = useDispatch();
