@@ -1,5 +1,5 @@
 import React from "react";
-import "./Items.css";
+import "./product.css";
 
 export default class Item extends React.Component {
   state = {
@@ -24,20 +24,20 @@ export default class Item extends React.Component {
       <div>Loading...</div>
     ) : !this.state.loadingError ? (
       <div className="">
-        {this.state.object.map((sample) => (
-          <div className="item" key={sample.id}>
-            <div className="heading">{sample.name}</div>
-            <div className="description">{sample.description}</div>
+        {this.state.object.map((product) => (
+          <div className="item" key={product.id}>
+            <div className="heading">{product.name}</div>
+            <div className="description">{product.description}</div>
             <br />
-            {sample.extraPriceActive ? (
+            {product.extraPriceActive ? (
               <div>
                 <div style={{ textDecorationLine: "line-through" }}>
-                  {sample.price}:-
+                  {product.price}:-
                 </div>
-                <div style={{ color: "red" }}>{sample.extraPrice}:-</div>
+                <div style={{ color: "red" }}>{product.extraPrice}:-</div>
               </div>
             ) : (
-              <div>{sample.price}:-</div>
+              <div>{product.price}:-</div>
             )}
             <hr />
           </div>

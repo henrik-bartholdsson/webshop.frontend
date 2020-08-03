@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Item from "./components/Item";
+import Product from "./components/product";
 import Header from "./components/header";
 import SideMenuLeft from "./components/sideMenuLeft";
 import "./Columns.css";
@@ -11,7 +11,7 @@ function App() {
       <Header id="LeftSide" />
       <div className="Columns">
         <SideMenuLeft />
-        <Item />
+        <Product />
       </div>
     </div>
   );
