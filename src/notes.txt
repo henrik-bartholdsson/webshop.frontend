@@ -1,5 +1,4 @@
-Geting data from API (https://localhost:44324/weatherforecast)
-Displays data when item.js is rendered
+
 
 
 

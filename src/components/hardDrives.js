@@ -1,7 +1,7 @@
 import React from "react";
-import "./product.css";
+import "./hardDrives.css";
 
-export default class Item extends React.Component {
+export default class HardDrives extends React.Component {
   state = {
     loading: true,
     loadingError: false,
@@ -9,11 +9,10 @@ export default class Item extends React.Component {
   };
 
   async componentDidMount() {
-    await fetch("https://localhost:44324/api/items")
+    await fetch("https://localhost:44324/api/v1/items")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ object: data, loading: false });
-        console.log(data);
       });
 
     this.setState({ loadingError: false });

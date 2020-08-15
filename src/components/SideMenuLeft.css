@@ -1,3 +1,11 @@
 .SideMenuLeft {
   background-color: darkgrey;
+  font-weight: bold;
+  padding: 4pt;
+}
+
+.Categories {
+  font-weight: normal;
+  padding-top: 5pt;
+  color: blue;
 }
