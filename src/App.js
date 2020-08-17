@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
+import GetMenu from "./components/pages/testMenu";
 import Home from "./components/pages/home";
 import HardDrives from "./components/hardDrives";
 import Product from "./components/pages/product";
@@ -27,6 +28,11 @@ function App() {
               path={"/product" + 2}
               exact
               render={() => <Product id={2} />}
+            ></Route>
+            <Route
+              path={"/test"}
+              exact
+              render={() => <GetMenu info={"123"} />}
             ></Route>
           </Switch>
         </div>

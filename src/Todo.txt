@@ -1,2 +1,2 @@
 Läs mer om hooks (yt)
-Menyn funkar -> rendera menyn utifråån data.
+Menyn funkar -> rendera menyn utifrån data.

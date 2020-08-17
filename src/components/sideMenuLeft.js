@@ -29,6 +29,9 @@ function SideMenuLeft() {
             <Link style={navStyle} to="product2">
               <li>Product2</li>
             </Link>
+            <Link style={navStyle} to="Test">
+              <li>Test</li>
+            </Link>
           </ul>
         </nav>
       </div>
