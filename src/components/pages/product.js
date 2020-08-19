@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 
-function Product(props) {
-  const [prop, setProp] = useState(() => props);
-
+function Product({ match }) {
+  console.log(match);
   const fetchItems = async () => {
     const data = await fetch(
-      "https://localhost:44324/api/v1/items?category=" + props.id
+      "https://localhost:44324/api/v1/items?category=" + match.params.id
     );
 
     const items = await data.json();
     setState(items);
     return items;
   };
-
-  if (props.id !== prop.id) {
-    setProp(props);
-    fetchItems();
-  }
 
   const [state, setState] = useState(() => {
     fetchItems();

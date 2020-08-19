@@ -6,11 +6,14 @@ function Test(props) {
       {" "}
       {props.props ? (
         <div>
-          {" "}
           {props.props.map((t) => (
             <div key={t.id}>
-              {props.parent ? props.parent + t.title : t.title}
-              {t.subCategories ? (
+              {t.subCategories.length ? (
+                t.title
+              ) : (
+                <a href={"/product" + t.id}>{t.title}</a>
+              )}
+              {t.subCategories.length ? (
                 <div>
                   <Test
                     props={t.subCategories}

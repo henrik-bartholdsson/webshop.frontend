@@ -7,34 +7,37 @@ import HardDrives from "./components/hardDrives";
 import Product from "./components/pages/product";
 import Header from "./components/header";
 import SideMenuLeft from "./components/sideMenuLeft";
+import CategoriesFactory from "./components/categoriesFactory";
 import "./Columns.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Header id="LeftSide" />
+        <Header id={666} />
         <div className="Columns">
           <SideMenuLeft />
           <Switch>
             <Route path="/" exact component={Home}></Route>
-            <Route path="/HardDrives" component={HardDrives}></Route>
+            <Route path="/product0" exact component={Home}></Route>
             <Route
-              path={"/product" + 1}
+              path={"/product/:id"}
               exact
-              render={() => <Product id={1} />}
-            ></Route>
-            <Route
-              path={"/product" + 2}
-              exact
-              render={() => <Product id={2} />}
+              render={(routerProps) => {
+                return <Product match={routerProps.match} />;
+              }}
             ></Route>
             <Route
               path={"/test"}
               exact
               render={() => <GetMenu info={"123"} />}
             ></Route>
+            <Route
+              path={"/"}
+              render={() => <div>404 - Page not found.</div>}
+            ></Route>
           </Switch>
+          <CategoriesFactory />
         </div>
       </div>
     </Router>

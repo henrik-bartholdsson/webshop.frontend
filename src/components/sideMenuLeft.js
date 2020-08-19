@@ -1,15 +1,11 @@
 import React from "react";
 import "./SideMenuLeft.css";
-import { Link, withRouter } from "react-router-dom";
-import MenuItem from "./menuItem";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function SideMenuLeft() {
   const navStyle = {
     color: "withe",
   };
-
-  const dispatch = useDispatch();
 
   return (
     <div className="SideMenuLeft">
@@ -23,10 +19,10 @@ function SideMenuLeft() {
             <Link style={navStyle} to="harddrives">
               <li>Harddrives</li>
             </Link>
-            <Link style={navStyle} to="product1">
+            <Link style={navStyle} to={"/product/1"}>
               <li>Product1</li>
             </Link>
-            <Link style={navStyle} to="product2">
+            <Link style={navStyle} to="/product2">
               <li>Product2</li>
             </Link>
             <Link style={navStyle} to="Test">
