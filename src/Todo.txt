@@ -2,3 +2,5 @@ Läs mer om hooks (yt)
 Menyn funkar -> rendera menyn utifrån data.
 
 Rendera menyn i sideMenuLeft likt den i test.js, men Link komponenter
+
+uppdatera produkterna när match.params.id ändras i products.

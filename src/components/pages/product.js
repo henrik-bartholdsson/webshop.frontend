@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 function Product({ match }) {
-  console.log(match);
+  const [pageNr, setPageNr] = useState(() => match.params.id);
+  console.log(pageNr);
+  console.log(match.params.id);
+
   const fetchItems = async () => {
     const data = await fetch(
       "https://localhost:44324/api/v1/items?category=" + match.params.id
@@ -11,6 +14,11 @@ function Product({ match }) {
     setState(items);
     return items;
   };
+
+  if (pageNr !== match.params.id) {
+    setPageNr(match.params.id);
+    fetchItems();
+  }
 
   const [state, setState] = useState(() => {
     fetchItems();

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CategoryItem from "./categoryItem";
+import "./Categories.css";
 
 function CategoriesFactory() {
   const fetchItems = async () => {
@@ -14,7 +15,11 @@ function CategoriesFactory() {
     fetchItems();
   });
 
-  return <CategoryItem categoryItems={categories} />;
+  return (
+    <div className="SideMenuLeft">
+      <CategoryItem categoryItems={categories} />
+    </div>
+  );
 }
 
 export default CategoriesFactory;
