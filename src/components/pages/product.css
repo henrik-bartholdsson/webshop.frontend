@@ -1,0 +1,19 @@
+.Product {
+  padding: 1em;
+  margin: 1pt;
+  background-color: lightgrey;
+  color: darkslategrey;
+}
+
+.ProductHeader {
+  font-size: 12pt;
+  font-weight: bolder;
+  color: blue;
+}
+
+.ProductDescription {
+  margin-top: 4pt;
+  border: 1pt;
+  border-color: black;
+  color: darkslategrey;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./categoryItem.css";
 
 function CategoryItem(props) {
   return (
@@ -10,7 +11,7 @@ function CategoryItem(props) {
             <div key={category.id}>
               <div>
                 {category.subCategories.length ? (
-                  <div>{category.title}</div>
+                  <button>{category.title}</button>
                 ) : (
                   <div>
                     <Link to={"/product/" + category.id}>

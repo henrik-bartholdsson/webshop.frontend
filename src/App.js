@@ -1,12 +1,9 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
-import GetMenu from "./components/pages/testMenu";
 import Home from "./components/pages/home";
-import HardDrives from "./components/hardDrives";
 import Product from "./components/pages/product";
 import Header from "./components/header";
-import SideMenuLeft from "./components/sideMenuLeft";
 import CategoriesFactory from "./components/categoriesFactory";
 import "./Columns.css";
 
@@ -16,7 +13,7 @@ function App() {
       <div className="App">
         <Header id={666} />
         <div className="Columns">
-          <SideMenuLeft />
+          <CategoriesFactory />
           <Switch>
             <Route path="/" exact component={Home}></Route>
             <Route path="/product0" exact component={Home}></Route>
@@ -28,16 +25,12 @@ function App() {
               }}
             ></Route>
             <Route
-              path={"/test"}
-              exact
-              render={() => <GetMenu info={"123"} />}
-            ></Route>
-            <Route
               path={"/"}
-              render={() => <div>404 - Page not found.</div>}
+              render={() => (
+                <div style={{ margin: "1em" }}>404 - Page not found :(</div>
+              )}
             ></Route>
           </Switch>
-          <CategoriesFactory />
         </div>
       </div>
     </Router>
