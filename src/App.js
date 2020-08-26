@@ -5,7 +5,6 @@ import Home from "./components/pages/home";
 import Product from "./components/pages/product";
 import Header from "./components/header";
 import CategoriesFactory from "./components/categoriesFactory";
-import "./Columns.css";
 
 function App() {
   return (

@@ -10,12 +10,11 @@ function Header() {
   return (
     <div className="Header">
       Header component, here will be some text and logo.
-      <div style={{ float: "right", marginLeft: "1em" }}>
-        {loged ? <div>Welcome Mr.X</div> : <div>Not loged in</div>}
-      </div>
-      <button style={{ float: "right" }} onClick={() => dispatch(isLoged())}>
+      <div>{loged ? <div>Welcome Mr.X</div> : <div>Not loged in</div>}</div>
+      <button onClick={() => dispatch(isLoged())}>
         {loged ? <span>Logout</span> : <span>Login</span>}
       </button>
+      <div>Basket</div>
     </div>
   );
 }

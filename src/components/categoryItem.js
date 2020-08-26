@@ -11,7 +11,10 @@ function CategoryItem(props) {
             <div key={category.id}>
               <div>
                 {category.subCategories.length ? (
-                  <button>{category.title}</button>
+                  <div>
+                    <br />
+                    {category.title}
+                  </div>
                 ) : (
                   <div>
                     <Link to={"/product/" + category.id}>
@@ -23,7 +26,7 @@ function CategoryItem(props) {
               {category.subCategories ? (
                 <CategoryItem categoryItems={category.subCategories} />
               ) : (
-                <div>--</div>
+                <div></div>
               )}
             </div>
           ))}

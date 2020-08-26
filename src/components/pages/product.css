@@ -1,6 +1,7 @@
 .Product {
   padding: 1em;
-  margin: 1pt;
+  padding-bottom: 20pt;
+  margin: 2pt;
   background-color: lightgrey;
   color: darkslategrey;
 }
@@ -16,4 +17,13 @@
   border: 1pt;
   border-color: black;
   color: darkslategrey;
+}
+
+.Basket {
+  margin-top: 4pt;
+  font-size: 8pt;
+  float: right;
+  text-align: right;
+  color: rgb(45, 90, 0);
+  font-weight: bolder;
 }
