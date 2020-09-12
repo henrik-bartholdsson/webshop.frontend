@@ -1,3 +1,5 @@
 Läs mer om hooks (yt)
 
 Skapa grupper/extra kategprier
+
+Ränsa från rad 25 i categoryItems.js

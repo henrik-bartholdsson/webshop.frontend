@@ -10,10 +10,17 @@ function CategoryItem(props) {
           {props.categoryItems.map((category) => (
             <div key={category.id}>
               <div>
-                {category.subCategories.length ? (
+                {category.subcategories.length ? (
                   <div>
                     <br />
                     {category.title}
+                    {category.subcategories.map((subcat) => (
+                      <Link to={"/product/" + subcat.id} key={subcat.id}>
+                        <li key={subcat.id} style={{ marginLeft: "20px" }}>
+                          {subcat.title}
+                        </li>
+                      </Link>
+                    ))}
                   </div>
                 ) : (
                   <div>
@@ -24,7 +31,7 @@ function CategoryItem(props) {
                 )}
               </div>
               {category.subCategories ? (
-                <CategoryItem categoryItems={category.subCategories} />
+                <CategoryItem categoryItems={category.subcategories} />
               ) : (
                 <div></div>
               )}

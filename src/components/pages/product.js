@@ -3,8 +3,6 @@ import "./product.css";
 
 function Product({ match }) {
   const [pageNr, setPageNr] = useState(() => match.params.id);
-  console.log(pageNr);
-  console.log(match.params.id);
 
   const fetchItems = async () => {
     const data = await fetch(
