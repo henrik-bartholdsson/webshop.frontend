@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
 import Home from "./components/pages/home";
 import Product from "./components/pages/product";
-import Header from "./components/header";
+import Header from "./components/pages/header/header";
 import CategoriesFactory from "./components/categoriesFactory";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
           <CategoriesFactory />
           <Switch>
             <Route path="/" exact component={Home}></Route>
-            <Route path="/product0" exact component={Home}></Route>
             <Route
               path={"/product/:id"}
               exact

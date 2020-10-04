@@ -9,3 +9,10 @@ export const isNotLoged = () => {
     type: "IS_NOT_LOGED",
   };
 };
+
+export const saveToken = (token) => {
+  return {
+    type: "SAVE",
+    data: token,
+  };
+};
