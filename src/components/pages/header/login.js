@@ -5,7 +5,7 @@ import { isLoged, saveToken } from "../../../store/actions";
 async function Authenticate(dispatch, username, password) {
   const payload = { username: username, password: password };
 
-  console.log("Authing!!!!");
+  console.log("Authing..");
 
   await fetch("https://localhost:44324/api/v1/authenticate/login", {
     method: "POST",
@@ -28,11 +28,6 @@ function LoginComponent() {
   const PasswordInput = useRef();
   const dispatch = useDispatch();
   const loged = useSelector((state) => state.isLoged);
-  const token = useSelector((state) => state.tokenHandler);
-
-  console.log("Reloaded...");
-  console.log(loged);
-  console.log(token);
 
   function AuthenticatePreCheck() {
     const username = UserNameInput.current.value;

@@ -9,7 +9,7 @@ function Home() {
   const token = useSelector((state) => state.tokenHandler);
 
   useEffect(() => {
-    console.log("Effect is running");
+    console.log("Effect is running, loged: " + loged);
 
     if (loged) {
       GetValues(token);
