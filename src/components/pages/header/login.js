@@ -1,13 +1,17 @@
 import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { isLoged, saveToken } from "../../../store/actions";
+import { isLoged, saveToken, remoteAPI } from "../../../store/actions";
 
 async function Authenticate(dispatch, username, password) {
   const payload = { username: username, password: password };
 
+  const apiBaseUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
+
+
   console.log("Authing..");
 
-  await fetch("https://localhost:44324/api/v1/authenticate/login", {
+  // {global.config.apiBaseUrl}:{global.config.port}/api/{global.config.apiVersion}
+  await fetch(apiBaseUrl + "/authenticate/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,8 +22,11 @@ async function Authenticate(dispatch, username, password) {
     .then((resp) => {
       dispatch(isLoged(true));
       dispatch(saveToken(resp.token));
+      console.log(resp.token)
     })
     .catch((err) => console.log("Error: " + err));
+
+
 }
 
 function LoginComponent() {
@@ -48,27 +55,27 @@ function LoginComponent() {
       {loged ? (
         <div>Welcome Mr.X</div>
       ) : (
-        <div>
-          <input ref={UserNameInput} type="text" placeholder="Username"></input>
-          <input
-            ref={PasswordInput}
-            type="password"
-            placeholder="Password"
-          ></input>
-        </div>
-      )}
+          <div>
+            <input ref={UserNameInput} type="text" placeholder="Username"></input>
+            <input
+              ref={PasswordInput}
+              type="password"
+              placeholder="Password"
+            ></input>
+          </div>
+        )}
 
       {loged ? (
         <button onClick={() => LogOut()}>Logout</button>
       ) : (
-        <button
-          onClick={() => {
-            AuthenticatePreCheck();
-          }}
-        >
-          Login
-        </button>
-      )}
+          <button
+            onClick={() => {
+              AuthenticatePreCheck();
+            }}
+          >
+            Login
+          </button>
+        )}
     </div>
   );
 }

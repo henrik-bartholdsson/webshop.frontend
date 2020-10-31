@@ -3,10 +3,11 @@ import "./product.css";
 
 function Product({ match }) {
   const [pageNr, setPageNr] = useState(() => match.params.id);
+  const baseUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
 
   const fetchItems = async () => {
     const data = await fetch(
-      "https://localhost:44324/api/v1/items?category=" + match.params.id
+      baseUrl + "/items?category=" + match.params.id
     );
 
     const items = await data.json();
@@ -40,8 +41,8 @@ function Product({ match }) {
           </div>
         ))
       ) : (
-        <h1>Loading</h1>
-      )}
+          <h1>Loading</h1>
+        )}
     </div>
   );
 }

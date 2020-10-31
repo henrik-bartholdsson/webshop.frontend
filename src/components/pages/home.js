@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import DisplayData from "./temp";
 
 function Home() {
+  const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
   const [info, setInfo] = useState({ data: "eempty" });
 
   const loged = useSelector((state) => state.isLoged);
@@ -27,11 +28,13 @@ function Home() {
       <div>
         <DisplayData data={info.data} />
       </div>
+      <div>api = {apiUrl}</div>
     </div>
   );
 
   async function GetValues(token) {
-    return await fetch("https://localhost:44324/api/v1/values", {
+
+    return await fetch(apiUrl + "/values", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + token,
