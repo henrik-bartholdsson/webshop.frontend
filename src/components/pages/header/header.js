@@ -1,13 +1,15 @@
 import React from "react";
 import "./header.css";
-import LoginComponent from "./login";
+import LoginComponent from "./Login";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const loged = true;
   return (
     <div className="Header">
-      <div>Header component, here will be some text and icon.</div>
-      <LoginComponent />
-      <div>Basket</div>
+      <Link to={"/"}>Home</Link>
+      <LoginComponent className="" />
+      <a className="BasketLink" href="/basket" hidden={!loged}>Basket</a>
     </div>
   );
 }

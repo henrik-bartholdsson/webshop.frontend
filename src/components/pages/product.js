@@ -35,7 +35,7 @@ function Product({ match }) {
               </div>
               <div className="ProductDescription">{p.description}</div>
             </div>
-            <a href={"hej"} className="Basket">
+            <a href={"hej"} className="BasketAddLink">
               Lägg i korg
             </a>
           </div>

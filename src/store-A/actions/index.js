@@ -16,10 +16,3 @@ export const saveToken = (token) => {
     data: token,
   };
 };
-
-
-export const remoteAPI = () => {
-  return {
-    type: "remoteAPI",
-  };
-};

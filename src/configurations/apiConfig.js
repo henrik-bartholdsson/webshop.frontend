@@ -1,5 +1,5 @@
 module.exports = global.config = {
-    apiBaseUrl: "https://localhost",
-    apiPort: "44324",
+    apiBaseUrl: "http://localhost",
+    apiPort: "54339",
     apiVersion: "v1"
 };

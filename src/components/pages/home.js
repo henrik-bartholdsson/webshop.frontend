@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import DisplayData from "./temp";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from '../../appState/appState'
+import DisplayData from "./Temp";
 
 function Home() {
   const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
   const [info, setInfo] = useState({ data: "eempty" });
+  const [context] = useContext(AppContext);
 
-  const loged = useSelector((state) => state.isLoged);
-  const token = useSelector((state) => state.tokenHandler);
 
   useEffect(() => {
-    console.log("Effect is running, loged: " + loged);
-
-    if (loged) {
-      GetValues(token);
-    } else setInfo({ ...info, data: "empty" });
-  }, [token]);
+    if (context.userLogedIn) {
+      GetValues();
+    }
+  }, [context.userToken]);
 
   return (
     <div style={{ padding: "12px" }}>
@@ -23,21 +20,21 @@ function Home() {
       <div>Start page of application</div>
       <div>
         That will use a token:{" "}
-        {loged ? <div>In loggad! :) </div> : <div>Ej in loggad</div>}
+        {context.userLogedIn ? <div>Inloggad! :) </div> : <div>Ej inloggad</div>}
       </div>
       <div>
         <DisplayData data={info.data} />
       </div>
       <div>api = {apiUrl}</div>
+      <div>Name = {context.userName}</div>
     </div>
   );
 
-  async function GetValues(token) {
-
-    return await fetch(apiUrl + "/values", {
+  async function GetValues() {
+    await fetch(apiUrl + "/values", {
       method: "GET",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + context.userToken,
       },
     })
       .then((x) => x.json())

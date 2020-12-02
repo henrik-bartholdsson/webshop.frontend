@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CategoryItem from "./categoryItem";
+import CategoryItem from "./CategoryItem";
 import "./Categories.css";
 
 function CategoriesFactory() {
@@ -7,6 +7,8 @@ function CategoriesFactory() {
   const fetchItems = async () => {
     const data = await fetch(apiUrl + "/categories");
     const result = await data.json();
+
+
 
     setState(result);
     return result;
