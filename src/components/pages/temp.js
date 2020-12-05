@@ -1,7 +1,7 @@
 import React from "react";
 
 function DisplayData(props) {
-  return <div>Data = {props.data} ----</div>;
+  return <div style={{ color: "blue" }}>Data = {props.data}</div>;
 }
 
 export default DisplayData;

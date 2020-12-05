@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CategoryItem from "./CategoryItem";
-import "./Categories.css";
+import CategoryItem from "./categoryItem";
+import "./categories.css";
 
 function CategoriesFactory() {
   const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion

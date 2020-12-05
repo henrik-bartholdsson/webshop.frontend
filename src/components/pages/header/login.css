@@ -1,9 +1,11 @@
 .loginComponent{
-    
+    display: flex;
+    float: left;
 }
 
 .textInputField{
     margin-left: 1em;
+    float: right;
 }
 
 .logButtons{

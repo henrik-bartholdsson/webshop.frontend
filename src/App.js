@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "./App.css";
-import Home from "./components/pages/Home";
-import Product from "./components/pages/Product";
-import Header from "./components/pages/header/Header";
-import CategoriesFactory from "./components/CategoriesFactory";
-import "./configurations/ApiConfig"
-import Basket from "./components/pages/Basket"
+import Home from "./components/pages/home";
+import Product from "./components/pages/product";
+import Header from "./components/pages/header/header";
+import CategoriesFactory from "./components/categoriesFactory";
+import "./configurations/apiConfig"
+import Basket from "./components/pages/basket"
 
 function App() {
   return (

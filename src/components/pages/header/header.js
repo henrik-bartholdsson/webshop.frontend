@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import LoginComponent from "./Login";
+import LoginComponent from "./login";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -8,7 +8,8 @@ function Header() {
   return (
     <div className="Header">
       <Link to={"/"}>Home</Link>
-      <LoginComponent className="" />
+      <div style={{ float: "right" }}><LoginComponent /></div>
+
       <a className="BasketLink" href="/basket" hidden={!loged}>Basket</a>
     </div>
   );

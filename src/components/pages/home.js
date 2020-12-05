@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from '../../appState/appState'
-import DisplayData from "./Temp";
+import DisplayData from "./temp";
 
 function Home() {
   const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
@@ -12,7 +12,7 @@ function Home() {
     if (context.userLogedIn) {
       GetValues();
     }
-  }, [context.userToken]);
+  }, [context.userLogedIn]);
 
   return (
     <div style={{ padding: "12px" }}>
@@ -26,7 +26,7 @@ function Home() {
         <DisplayData data={info.data} />
       </div>
       <div>api = {apiUrl}</div>
-      <div>Name = {context.userName}</div>
+      <div style={{ color: "red" }}>Name = {context.userName}</div>
     </div>
   );
 
