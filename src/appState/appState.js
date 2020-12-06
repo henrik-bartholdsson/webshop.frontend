@@ -8,6 +8,7 @@ export const AppStateProvider = (props) => {
         userToken: "",
         userLogedIn: false,
         userName: "",
+        basket: [],
     }
 
     const [context, setContext] = useState(appState);

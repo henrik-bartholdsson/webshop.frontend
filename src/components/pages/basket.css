@@ -1,3 +1,58 @@
 .BasketContainer{
-    padding: 1pc;
+    margin: 1em;
+    width: 90%;
+    overflow: hidden;
 }
+
+.BasketHeader {
+    text-align: center;
+}
+
+.BasketList {
+    width: 90%;
+    list-style: none;
+}
+
+.PriceContainer {
+    float: right;
+    width: fit-content;
+}
+
+.Price{
+    color: black;
+}
+
+.ExtraPrice {
+    color: orangered;
+}
+
+.TotalPrice {
+    float: right;
+}
+
+.ItemName {
+    float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .PlaceOrderButton {
+      margin-top: 1em;
+      float: right;
+  }
+
+  .EmptyBasket {
+      margin-top: 1em;
+      float: left;
+  }
+

@@ -28,7 +28,9 @@ function LoginComponent() {
   return (
     <div className="loginComponent">
       {context.userLogedIn ? (
-        <div>Welcome {context.userName}</div>
+        <div><div>Welcome {context.userName}</div>
+          <button onClick={() => LogOut()}>Logout</button>
+        </div>
       ) : (
           <div className="textInputField">
             <input ref={UserNameInput}
@@ -48,9 +50,6 @@ function LoginComponent() {
           </div>
         )}
 
-      {context.userLogedIn ? (
-        <button onClick={() => LogOut()}>Logout</button>
-      ) : (<div></div>)}
     </div>
   );
 

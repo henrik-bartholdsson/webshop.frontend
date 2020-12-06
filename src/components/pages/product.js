@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./product.css";
+import { AppContext } from '../../appState/appState'
 
 function Product({ match }) {
+  const [context] = useContext(AppContext)
   const [pageNr, setPageNr] = useState(() => match.params.id);
   const baseUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
 
@@ -24,20 +26,29 @@ function Product({ match }) {
     fetchItems();
   });
 
+  function addToBasket(product) {
+    context.basket.push(product);
+  }
+
   return (
     <div>
       {state ? (
-        state.map((p) => (
-          <div key={p.id} className="Product">
+        state.map((product) => (
+          <div key={product.id} className="Product">
             <div>
-              <div className="ProductHeader" key={p.id}>
-                {p.name}
+              <div className="ProductHeader" key={product.id}>
+                {product.name}
               </div>
-              <div className="ProductDescription">{p.description}</div>
+              <div className="ProductDescription">{product.description}</div>
+              <button onClick={() => addToBasket(product)} className="BasketAddLink">
+                Lägg i korg
+            </button>
+              <div className="PriceContainer">
+                <div className="PriceText">Pris:</div>
+                <div className="ProductPrice" style={{ textDecoration: product.extraPriceActive === true ? 'line-through' : 'none' }} >{product.price}</div>
+                {product.extraPriceActive ? (<div className="ProductExtraPrice">{product.extraPrice}</div>) : (<></>)}
+              </div>
             </div>
-            <a href={"hej"} className="BasketAddLink">
-              Lägg i korg
-            </a>
           </div>
         ))
       ) : (
