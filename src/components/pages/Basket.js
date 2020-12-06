@@ -1,15 +1,39 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { AppContext } from '../../appState/appState'
 import "./basket.css"
 
 function Basket() {
-    const [context, setContext] = useContext(AppContext);
+    const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
+    const [context] = useContext(AppContext);
     let fakeId = 0;
 
     let totalPrice = CalculateTotalPrice(context.basket);
 
-    function PlaceOrder() {
-        alert('Ordern är nu skapad')
+    async function PlaceOrder() {
+        let payload = {
+            items: [],
+            OrderInfo: "Order från front"
+        }
+
+        if (!context.basket.length > 0) {
+            alert('Varukorgen är tom!')
+            return
+        }
+        else {
+            payload.items = GatherItemsToPayload(context.basket);
+        }
+
+        await fetch(apiUrl + "/orders", {
+            method: "POST",
+            headers: {
+                //Authorization: "Bearer " + context.userToken,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(resp => resp.json())
+            .then(result => alert('Order skapad, din order har ordernummer: ' + result.orderId))
+
         EmptyBasket()
     }
 
@@ -17,6 +41,16 @@ function Basket() {
         window.location.reload();
         context.basket = [];
     }
+
+    useEffect(() => {
+        if (context.basket.length > 0) {
+            document.getElementById("emptyButton").disabled = false;
+            document.getElementById("placeOrderButton").disabled = false
+        } else {
+            document.getElementById("emptyButton").disabled = true;
+            document.getElementById("placeOrderButton").disabled = true
+        }
+    })
 
     return (
         <div>
@@ -40,8 +74,8 @@ function Basket() {
                 <hr />
                 <div className="TotalPrice">Total: {totalPrice}</div>
                 <br />
-                <button className="EmptyBasket" onClick={EmptyBasket}>Töm varukorgen</button>
-                <button className="PlaceOrderButton" onClick={PlaceOrder}>Skicka order</button>
+                <button id="emptyButton" className="EmptyBasket" onClick={EmptyBasket}>Töm varukorgen</button>
+                <button id="placeOrderButton" className="PlaceOrderButton" onClick={PlaceOrder}>Skicka order</button>
 
             </div>
         </div>
@@ -58,6 +92,14 @@ function CalculateTotalPrice(basket) {
             result += parseFloat(element.price)
     });
     return result;
+}
+
+function GatherItemsToPayload(context) {
+    let result = [];
+    context.forEach(i => {
+        result.push(i.id)
+    });
+    return result
 }
 
 
