@@ -7,6 +7,7 @@ import Header from "./components/pages/header/header";
 import CategoriesFactory from "./components/categoriesFactory";
 import "./configurations/apiConfig"
 import Basket from "./components/pages/basket"
+import MyOrders from './components/pages/myOrders'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
               exact
               render={() => { return <Basket /> }
               }>
+            </Route>
+            <Route path={"/myorders"} exact render={() => { return <MyOrders /> }}>
             </Route>
             <Route
               path={"/"}

@@ -10,6 +10,11 @@ function Basket() {
     let totalPrice = CalculateTotalPrice(context.basket);
 
     async function PlaceOrder() {
+        if (!context.userLogedIn) {
+            alert('Du måste loga in')
+            return;
+        }
+
         let payload = {
             items: [],
             OrderInfo: "Order från front"
@@ -26,14 +31,13 @@ function Basket() {
         await fetch(apiUrl + "/orders", {
             method: "POST",
             headers: {
-                //Authorization: "Bearer " + context.userToken,
+                Authorization: "Bearer " + context.userToken,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload),
         })
             .then(resp => resp.json())
             .then(result => alert('Order skapad, din order har ordernummer: ' + result.orderId))
-
         EmptyBasket()
     }
 

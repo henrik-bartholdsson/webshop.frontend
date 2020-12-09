@@ -9,8 +9,6 @@ function LoginComponent() {
 
   function AuthenticatePreCheck(e) {
     e.preventDefault();
-    //const username = UserNameInput.current.value;
-    //const password = PasswordInput.current.value;
 
     const username = "henrik"
     const password = "Password@123"
