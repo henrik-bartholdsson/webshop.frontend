@@ -44,7 +44,7 @@ function Product({ match }) {
             </button>
               <div className="ProductAvalibleIcon">
                 {product.avalible <= 0 ? (<div title="Ej i lager" className="ProductAvalibleBad">&#128711;</div>) : (<div />)}
-                {product.avalible <= 5 && product.avalible > 0 ? (<div title="Mindre än 5" className="ProductAvalibleLow">&#128710;</div>) : (<div />)}
+                {product.avalible <= 5 && product.avalible > 0 ? (<div title={"Endast " + product.avalible + " kvar"} className="ProductAvalibleLow">&#128710;</div>) : (<div />)}
                 {product.avalible > 5 ? (<div title="I lager" className="ProductAvalibleGood">&#128402;</div>) : (<div />)}
               </div>
               <div className="PriceContainer">
