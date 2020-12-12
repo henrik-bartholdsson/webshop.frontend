@@ -48,3 +48,20 @@ color: orangered;
 float: right;
 font-weight: 600;
 }
+
+.ProductAvalibleGood {
+  color: green;
+}
+
+.ProductAvalibleLow {
+  color: rgb(255, 166, 0);
+}
+
+.ProductAvalibleBad {
+  color: red;
+}
+
+.ProductAvalibleIcon {
+  font-weight: 900;
+  width: fit-content;
+}

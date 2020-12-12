@@ -23,24 +23,24 @@ function CategoryItem(props) {
                     ))}
                   </div>
                 ) : (
-                  <div>
-                    <Link to={"/product/" + category.id}>
-                      <li style={{ marginLeft: "20px" }}>{category.title}</li>
-                    </Link>
-                  </div>
-                )}
+                    <div>
+                      <Link to={"/product/" + category.id}>
+                        <li style={{ marginLeft: "20px" }}>{category.title}</li>
+                      </Link>
+                    </div>
+                  )}
               </div>
               {category.subCategories ? (
                 <CategoryItem categoryItems={category.subcategories} />
               ) : (
-                <div></div>
-              )}
+                  <div></div>
+                )}
             </div>
           ))}
         </div>
       ) : (
-        <div>Nope</div>
-      )}
+          <div>No categories</div>
+        )}
     </div>
   );
 }

@@ -54,8 +54,7 @@ function LoginComponent() {
 
   async function Authenticate(username, password) {
     const payload = { username: username, password: password };
-    const apiBaseUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
-    await fetch(apiBaseUrl + "/authenticate/login", {
+    await fetch(global.config.apiUrl + "/authenticate/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,18 +64,17 @@ function LoginComponent() {
       .then(response => checkLogin(response))
       .catch((err) => console.log("Error: " + err));
 
-    async function checkLogin(result) {
-      if (result.ok) {
-        let a = await result.json();
-        setContext({ ...context, userToken: a.token, userLogedIn: true, userName: a.name })
-        return a;
+    async function checkLogin(response) {
+      if (response.ok) {
+        let result = await response.json();
+        setContext({ ...context, userToken: result.token, userLogedIn: true, userName: result.name })
       }
       else {
-        if (result.status === 401)
+        if (response.status === 401)
           alert('Bad username or password!');
         else
           alert('Unexpected error!')
-        return result
+        return response
       }
     }
   }

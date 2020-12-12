@@ -5,11 +5,10 @@ import { AppContext } from '../../appState/appState'
 function Product({ match }) {
   const [context] = useContext(AppContext)
   const [pageNr, setPageNr] = useState(() => match.params.id);
-  const baseUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
 
   const fetchItems = async () => {
     const data = await fetch(
-      baseUrl + "/items?category=" + match.params.id
+      global.config.apiUrl + "/items?category=" + match.params.id
     );
 
     const items = await data.json();
@@ -43,10 +42,16 @@ function Product({ match }) {
               <button onClick={() => addToBasket(product)} className="BasketAddLink">
                 Lägg i korg
             </button>
+              <div className="ProductAvalibleIcon">
+                {product.avalible <= 0 ? (<div title="Ej i lager" className="ProductAvalibleBad">&#128711;</div>) : (<div />)}
+                {product.avalible <= 5 && product.avalible > 0 ? (<div title="Mindre än 5" className="ProductAvalibleLow">&#128710;</div>) : (<div />)}
+                {product.avalible > 5 ? (<div title="I lager" className="ProductAvalibleGood">&#128402;</div>) : (<div />)}
+              </div>
               <div className="PriceContainer">
                 <div className="PriceText">Pris:</div>
                 <div className="ProductPrice" style={{ textDecoration: product.extraPriceActive === true ? 'line-through' : 'none' }} >{product.price}</div>
                 {product.extraPriceActive ? (<div className="ProductExtraPrice">{product.extraPrice}</div>) : (<></>)}
+
               </div>
             </div>
           </div>

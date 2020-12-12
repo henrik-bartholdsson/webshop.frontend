@@ -3,7 +3,6 @@ import "./header.css";
 import { AppContext } from '../../../appState/appState'
 import LoginComponent from "./login";
 import { Link } from "react-router-dom";
-import MyOrders from '../myOrders';
 
 function Header() {
   const [context] = useContext(AppContext);

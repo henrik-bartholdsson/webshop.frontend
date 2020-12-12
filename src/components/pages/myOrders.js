@@ -7,26 +7,24 @@ function MyOrders() {
     let [orders, setOrders] = useState([]);
 
 
-
-    async function GetOrders() {
-        await fetch("http://localhost:54339/api/v1/orders",
-            {
-                method: "GET",
-                headers: {
-                    Authorization: "Bearer " + context.userToken,
-                },
-            })
-            .then(resp => resp.json())
-            .then(res => {
-                setOrders(res)
-            })
-    }
-
-
     useEffect(() => {
         if (context.userLogedIn)
             GetOrders()
-    }, [context.userLogedIn])
+
+        async function GetOrders() {
+            await fetch("http://localhost:54339/api/v1/orders",
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + context.userToken,
+                    },
+                })
+                .then(response => response.json())
+                .then(result => {
+                    setOrders(result)
+                })
+        }
+    }, [context.userLogedIn, context.userToken])
 
 
 

@@ -3,9 +3,8 @@ import CategoryItem from "./categoryItem";
 import "./categories.css";
 
 function CategoriesFactory() {
-  const apiUrl = global.config.apiBaseUrl + ":" + global.config.apiPort + "/api/" + global.config.apiVersion
   const fetchItems = async () => {
-    const data = await fetch(apiUrl + "/categories");
+    const data = await fetch(global.config.apiUrl + "/categories");
     const result = await data.json();
 
 
