@@ -39,19 +39,36 @@ function Product({ match }) {
                 {product.name}
               </div>
               <div className="ProductDescription">{product.description}</div>
-              <button onClick={() => addToBasket(product)} className="BasketAddLink">
-                Lägg i korg
-            </button>
-              <div className="ProductAvalibleIcon">
-                {product.avalible <= 0 ? (<div title="Ej i lager" className="ProductAvalibleBad">&#128711;</div>) : (<div />)}
-                {product.avalible <= 5 && product.avalible > 0 ? (<div title={"Endast " + product.avalible + " kvar"} className="ProductAvalibleLow">&#128710;</div>) : (<div />)}
-                {product.avalible > 5 ? (<div title="I lager" className="ProductAvalibleGood">&#128402;</div>) : (<div />)}
-              </div>
-              <div className="PriceContainer">
-                <div className="PriceText">Pris:</div>
-                <div className="ProductPrice" style={{ textDecoration: product.extraPriceActive === true ? 'line-through' : 'none' }} >{product.price}</div>
-                {product.extraPriceActive ? (<div className="ProductExtraPrice">{product.extraPrice}</div>) : (<></>)}
+              <div className="BuyContainer">
 
+                <div className="BasketAddLink">
+                  <button onClick={() => addToBasket(product)}>
+                    Köp
+            </button>
+                </div>
+                <div className="PriceContainer">
+                  <div className="PriceText">Pris:</div>
+                  <div className="ProductPrice" style={{
+                    textDecoration: product.extraPriceActive === true ?
+                      'line-through' :
+                      'none'
+                  }} >{product.price}</div>
+                  {product.extraPriceActive ?
+                    (<div className="ProductExtraPrice">{product.extraPrice}</div>) :
+                    (<div />)}
+
+                </div>
+                <div className="ProductAvalibleIcon">
+                  {product.avalible <= 0 ?
+                    (<div title="Ej i lager" className="ProductAvalibleBad">&#128711;</div>) :
+                    (<div />)}
+                  {product.avalible <= 5 && product.avalible > 0 ?
+                    (<div title={"Endast " + product.avalible + " kvar"} className="ProductAvalibleLow">&#128710;</div>) :
+                    (<div />)}
+                  {product.avalible > 5 ?
+                    (<div title="I lager" className="ProductAvalibleGood">&#9786;</div>) :
+                    (<div />)}
+                </div>
               </div>
             </div>
           </div>

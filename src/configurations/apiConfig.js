@@ -1,3 +1,3 @@
 module.exports = global.config = {
-    apiUrl: "http://localhost:54339/api/v1"
+    apiUrl: "https://192.168.0.50:44319/api/v1"
 };

@@ -1,13 +1,26 @@
 .Header {
-  height: 30px;
+  padding-left: 2%;
+  height: 50px;
+  align-items: center;
   color: rgb(0, 70, 128);
   background-color: gray;
-  padding: 1em;
+  display: flex;
+}
+
+.HomeLink {
+  flex: 1;
 }
 
 .BasketLink{
+  flex: 1;
   font-size: 0.7pc;
-  margin-left: 2pc;
-  float: right;
-  margin-right: 5em;
+}
+
+.MyOrdersLink {
+  flex: 1;
+  font-size: 0.7pc;
+}
+
+.LoginComponent {
+  flex: 4;
 }

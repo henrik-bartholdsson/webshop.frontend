@@ -6,6 +6,8 @@ function Home() {
   const [info, setInfo] = useState({ data: "" });
   const [context] = useContext(AppContext);
 
+  console.log("Info: " + process.env.REACT_APP_API_KEY)
+
 
   useEffect(() => {
     if (context.userLogedIn && info.data === "") {
@@ -38,6 +40,7 @@ function Home() {
         <DisplayData data={info.data} />
       </div>
       <div style={{ color: "red" }}>Name = {context.userName}</div>
+      <div>{process.env.REACT_APP_HELLO}</div>
     </div>
   );
 

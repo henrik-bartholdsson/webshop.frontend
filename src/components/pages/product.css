@@ -21,13 +21,11 @@
 
 .BasketAddLink {
   margin-left: 0.5em;
-  margin-top: 4pt;
   font-size: 8pt;
   float: right;
 }
 
 .PriceContainer {
-  margin-top: 0.5em;
   margin-left: 1em;
   float: right;
 }
@@ -64,4 +62,9 @@ font-weight: 600;
 .ProductAvalibleIcon {
   font-weight: 900;
   width: fit-content;
+  float: right;
+}
+
+.BuyContainer {
+  margin-top: 1em;
 }

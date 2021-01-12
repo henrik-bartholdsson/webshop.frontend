@@ -12,13 +12,14 @@ function CategoryItem(props) {
               <div>
                 {category.subcategories.length ? (
                   <div>
-                    <br />
                     {category.title}
+                    <br />
                     {category.subcategories.map((subcat) => (
                       <Link to={"/product/" + subcat.id} key={subcat.id}>
                         <li key={subcat.id} style={{ marginLeft: "20px" }}>
                           {subcat.title}
                         </li>
+                        <br />
                       </Link>
                     ))}
                   </div>

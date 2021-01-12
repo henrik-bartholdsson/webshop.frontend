@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { AppContext } from '../../../appState/appState'
+import { Link } from "react-router-dom";
 import "./login.css";
 
 function LoginComponent() {
@@ -23,28 +24,54 @@ function LoginComponent() {
     setContext({ ...context, userToken: '', userLogedIn: false, userName: '' })
   }
 
+
+
+  ////////////// react navbar, html navbar
+
   return (
-    <div className="loginComponent">
+    <div className="LoginContainer">
       {context.userLogedIn ? (
-        <div><div>Welcome {context.userName}</div>
-          <button onClick={() => LogOut()}>Logout</button>
+        <div>
+          <div className="WellcomeUser"> Welcome
+            <ul>
+              <li className="dropdown">
+                <a className="dropbtn">{context.userName}</a>
+                <div className="dropdown-content">
+                  <div className="MyOrdersLink">
+                    {context.userLogedIn ?
+                      (<Link to={"/myorders"}>Mina ordrar</Link>) :
+                      (<div />)}
+                  </div>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="LogButtons">
+            <button onClick={() => LogOut()}>Logout
+          </button>
+          </div>
         </div>
       ) : (
-          <div className="textInputField">
-            <input ref={UserNameInput}
-              type="text"
-              placeholder="Username"></input>
-            <input ref={PasswordInput}
-              type="password"
-              placeholder="Password"
-            ></input>
-            <button
-              onClick={(e) => {
-                AuthenticatePreCheck(e);
-              }}
-            >
-              Login
-          </button>
+          <div className="Login">
+            <div className="InputFields">
+              <input ref={UserNameInput}
+                type="text"
+                placeholder="Username"></input>
+              <input ref={PasswordInput}
+                type="password"
+                placeholder="Password"
+              ></input>
+            </div>
+            <div className="LogButtons">
+              <button
+                onClick={(e) => {
+                  AuthenticatePreCheck(e);
+                }}>
+                Login
+                </button>
+            </div>
           </div>
         )}
 

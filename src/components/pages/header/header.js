@@ -9,10 +9,15 @@ function Header() {
 
   return (
     <div className="Header">
-      <Link to={"/"}>Home</Link>
-      <LoginComponent />
-      <Link to={"/basket"} className={"BasketLink"}>Varukorg</Link>
-      <div>{context.userLogedIn ? (<Link to={"/myorders"} className={"BasketLink"}>Mina ordrar</Link>) : (<div></div>)}</div>
+      <div className="HomeLink">
+        <Link to={"/"}>Home</Link>
+      </div>
+      <div className="BasketLink">
+        <Link to={"/basket"} className={"BasketLink"}>Varukorg</Link>
+      </div>
+      <div className="LoginComponent">
+        <LoginComponent />
+      </div>
     </div >
   );
 }
