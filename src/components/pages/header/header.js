@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./header.css";
-import { AppContext } from '../../../appState/appState'
 import LoginComponent from "./login";
 import { Link } from "react-router-dom";
 
 function Header() {
-  const [context] = useContext(AppContext);
-
+  
   return (
     <div className="Header">
       <div className="HomeLink">

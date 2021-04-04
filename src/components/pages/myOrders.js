@@ -12,7 +12,7 @@ function MyOrders() {
             GetOrders()
 
         async function GetOrders() {
-            await fetch("http://localhost:54339/api/v1/orders",
+            await fetch("https://localhost:5001/api/v1/orders",
                 {
                     method: "GET",
                     headers: {
@@ -34,7 +34,7 @@ function MyOrders() {
         <div>
             {context.userLogedIn ?
                 (
-                    orders.map((o, index) => <div key={index}><hr /><div className="Order">{o.orderInfo}, Ordernummer: {o.orderId}</div>
+                    orders.map((o, index) => <div key={index}><hr /><button className="Order button">{o.orderInfo}, Ordernummer: {o.orderId}</button>
                         {o.items.map((i, index) => <div key={index + 'a'} className="Item">{i.itemName}</div>)}
                         <br />
                     </div>)

@@ -35,15 +35,15 @@ function LoginComponent() {
           <div className="WellcomeUser"> Welcome
             <ul>
               <li className="dropdown">
-                <a className="dropbtn">{context.userName}</a>
+                <button className="dropbtn button">{context.userName}</button>
                 <div className="dropdown-content">
                   <div className="MyOrdersLink">
                     {context.userLogedIn ?
                       (<Link to={"/myorders"}>Mina ordrar</Link>) :
                       (<div />)}
                   </div>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
+                  <button className="button" href="#">Link 2</button>
+                  <button className="button" href="#">Link 3</button>
                 </div>
               </li>
             </ul>
