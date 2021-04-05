@@ -9,11 +9,14 @@ function MyOrders() {
 
 
     useEffect(() => {
+        if(!context.userLogedIn)
+        window.location = '/';
+
         if (context.userLogedIn)
             GetOrders()
 
         async function GetOrders() {
-            await fetch("https://localhost:5001/api/v1/orders",
+            await fetch(global.config.apiUrl + "/orders",
                 {
                     method: "GET",
                     headers: {
@@ -27,7 +30,6 @@ function MyOrders() {
         }
     }, [context.userLogedIn, context.userToken])
 
-console.log(orders)
 
 
 
@@ -35,14 +37,14 @@ console.log(orders)
         <div>
             {context.userLogedIn ?
                 (
-                    orders.map((o, index) => <div key={index}><hr /><Link to={"/myOrders/" + o.orderId} key={o.orderId} className="Order button">{o.orderInfo}, Ordernummer: {o.orderId}</Link>
-                        {o.items.map((i, index) => <div key={index + 'a'} className="Item">{i.itemName}</div>)}
+                    orders.map((order, index) => <div key={index}><hr /><Link to={"/myOrders/" + order.orderId} key={order.orderId} className="Order button">{order.orderInfo}, Ordernummer: {order.orderId}</Link>
+                        {order.items.map((i, index) => <div key={index + 'a'} className="Item">{i.itemName}</div>)}
                         <br />
                     </div>)
                 )
                 :
                 (
-                    <div>Du är ej inloggad.</div>
+                    <div>Du är utloggad.</div>
                 )}
         </div>
     )

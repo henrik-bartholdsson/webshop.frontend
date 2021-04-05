@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from '../../../appState/appState'
 import './orderDetails.css'
-import MyOrders from "./myOrders";
 
 
 function MyOrder(match)
@@ -9,30 +8,29 @@ function MyOrder(match)
     const [context] = useContext(AppContext);
     let [order, setOrder] = useState();
 
-    
-
-    async function GetOrder() {
-        await fetch(global.config.apiUrl + "/orders/" + match.match.params.id,
-            {
-                method: "GET",
-                headers: {
-                    Authorization: "Bearer " + context.userToken,
-                },
-            })
-            .then(response => response.json())
-            .then(result => {
-                setOrder(result)
-            })
-    }
-
     useEffect(() => {
 
+        if(!context.userLogedIn)
+        window.location = '/';
+
         GetOrder();
-    }, [context.userLogedIn, context.userToken]);
 
+        async function GetOrder() {
+            await fetch(global.config.apiUrl + "/orders/" + match.match.params.id,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + context.userToken,
+                    },
+                })
+                .then(response => response.json())
+                .then(result => {
+                    setOrder(result)
+                })
+        }
 
+    }, [context.userLogedIn, context.userToken, match.match.params.id]);
 
-    console.log(order)
 
     return (
         <div>
@@ -44,14 +42,14 @@ function MyOrder(match)
             {order.items.map((item, index) => <p key={index + 'a'}>{item.itemName}</p>)}
         </div>)
         :
-        (<div>
-            None
-        </div>)
+        (
+            <div>Du är utloggad.</div>
+            )
         }
         </div>
     )
 }
 
-
+// <Redirect to="/" />
 
 export default MyOrder;
