@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../appState/appState'
+import { AppContext } from '../../../appState/appState'
 import './myOrders.css'
+import { Link } from "react-router-dom";
 
 function MyOrders() {
     const [context] = useContext(AppContext);
@@ -26,7 +27,7 @@ function MyOrders() {
         }
     }, [context.userLogedIn, context.userToken])
 
-
+console.log(orders)
 
 
 
@@ -34,7 +35,7 @@ function MyOrders() {
         <div>
             {context.userLogedIn ?
                 (
-                    orders.map((o, index) => <div key={index}><hr /><button className="Order button">{o.orderInfo}, Ordernummer: {o.orderId}</button>
+                    orders.map((o, index) => <div key={index}><hr /><Link to={"/myOrders/" + o.orderId} key={o.orderId} className="Order button">{o.orderInfo}, Ordernummer: {o.orderId}</Link>
                         {o.items.map((i, index) => <div key={index + 'a'} className="Item">{i.itemName}</div>)}
                         <br />
                     </div>)
